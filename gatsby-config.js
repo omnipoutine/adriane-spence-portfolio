@@ -8,12 +8,27 @@ module.exports = {
     options: {
       "icon": "src/images/icon.png"
     }
-  }, "gatsby-plugin-mdx", {
+  }, {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "pages",
       "path": "./src/pages/"
     },
     __key: "pages"
-  }]
+  },{
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      "name": "markdown-pages",
+      "path": `${__dirname}/projects/`
+    },
+    __key: "markdown-pages"
+  },{
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      "name": "images",
+      "path": `${__dirname}/src/images/`
+    },
+    __key: "images"
+  },`gatsby-plugin-sharp`,
+  `gatsby-transformer-sharp`,`gatsby-transformer-remark`,`gatsby-plugin-image`,]
 };
