@@ -1,7 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Adriane Spence Portfolio`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Adriane Spence`,
+    titleTemplate: `%s · Industrial Designer`,
+    siteUrl: `https://www.yourdomain.tld`,
+    description: `Industrial Designer based in Toronto, Canada.`,
+    icon: `/icon.png`,
   },
   plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
@@ -30,5 +33,18 @@ module.exports = {
     },
     __key: "images"
   },`gatsby-plugin-sharp`,
-  `gatsby-transformer-sharp`,`gatsby-transformer-remark`,`gatsby-plugin-image`,]
+  `gatsby-transformer-sharp`,`gatsby-plugin-image`,{
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        {
+          resolve: `gatsby-remark-images`,
+          options: {
+            maxWidth: 800,
+          },
+        },
+      ],
+    },
+      },`gatsby-plugin-react-helmet`
+    ]
 };

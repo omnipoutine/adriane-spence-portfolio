@@ -2,34 +2,58 @@ import React from 'react';
 import styled from 'styled-components'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby';
-
+import { flexRowBetweenCenter } from './layout';
 const CardContainer = styled.div`
-    max-width:500px;
+    max-width:var(--img-size);
+
     div{
-        display:flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content:space-between;
+        ${flexRowBetweenCenter}
     }
     img{
-        max-width:500px;
-        max-height:500px;
+        max-width:var(--img-size);
+        max-height:var(--img-size);
+        
     }
     p{
         width:50%;
         text-align:right;
     }
+
     @media only screen and (min-width:1200px){
+        
         a{
-            color:rgba(0,0,0,0);
+            color:var(--transparent-color)
             transition: color 100ms ease-out;
+            img{
+                
+            }
+            img:hover{
+                transform: scale(0.9);
+                transition: transform 50ms ease-in;
+            }
         }
+        
+        
         a:hover{
-            color:var(--primary-text-color);
+            
+            h2,p{
+                animation: appear 100ms;
+                animation-fill-mode:forwards; 
+            }
         }
-        a:active{
-            color:rgba(0,0,0,0);
+        
+        
+        h2,p{
+            margin-bottom:0;
+            color:var(--transparent-color)
         }
+        
+        
+    }
+
+    @keyframes appear{
+        from{color: var(--transparent-color)}
+        to{color:var(--primary-text-color)}
     }
 `
 

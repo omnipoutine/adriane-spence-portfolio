@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { getImage,StaticImage } from 'gatsby-plugin-image'
 import Card from "../components/card"
+import { Helmet } from "react-helmet"
+import Meta from "../components/helmet"
 const IndexContainer = styled.div`
 display:flex;
 flex-direction:column;
@@ -13,36 +15,101 @@ justify-content:center;
  
  
  
+ 
  #mainHeaderDiv{
-  padding-top:15rem;
-   min-height:90vh;
+  
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   justify-content:center;
+  padding-top:7rem;
+   min-height:100vh;
+   
    h1{
      text-align:center;
+     margin-bottom: 5rem;
+     width:100%;
+     animation: 1s anim-lineUp ease-out 1;
+     overflow: hidden;
    }
    img{
-     max-width:800px;
+     max-width:90%;
+     margin-left:auto;
+     margin-right:auto;
+     
    }
+   
  }
+
+ 
+
  #projects{
    width:90%;
+   margin-bottom:10rem;
+
  }
  .cardDiv{
-   margin-bottom:10rem;
+   margin-top:var(--card-margin);
+   margin-bottom:var(--card-margin);
+   padding:1rem;
  }
  #projectHeaderDiv{
+   
    width:100%;
    h1{
      text-align:left;
+     margin-bottom: 10rem;
    }
+   
  }
+
+ 
+
+@media only screen and (min-width:768px){
+  #cardSection{
+    
+    
+  }
+  .cardDiv{
+    
+  }
+  
+}
+
 @media only screen and (min-width:1200px){
+  #mainHeaderDiv{
+    width:70%;
+    min-height:200vh;
+    img{
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+  }
   #cardSection{
     display:flex;
     flex-direction:row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items:start;
     flex-wrap:wrap;
-    width:90%;
+    
+  }
+}
+
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
   }
 }
 `
@@ -52,9 +119,10 @@ justify-content:center;
 const IndexPage = ({data}) => {
   return (
     <div>
+      <Meta title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} link={data.site.siteMetadata.siteUrl}></Meta>
       <Layout>
         <IndexContainer>
-          <div id="mainHeaderDiv"><h1>I'm an Industrial Design graduate based in Toronto. </h1><StaticImage src="../images/store the one.png" alt="A stat"></StaticImage></div>
+          <div id="mainHeaderDiv"><h1>I'm an Industrial Designer based in Toronto. </h1><div><StaticImage src="../images/subway platform.png" alt="A stat" id="mainImg" loading="eager"></StaticImage></div></div>
           
           <section id="projects">
             <div id="projectHeaderDiv">
@@ -79,7 +147,7 @@ export default IndexPage
 
 export const query = graphql`
 {
-  allMarkdownRemark{
+  allMarkdownRemark(filter: {frontmatter: {name: {ne: "about"}}}){
     edges{
       node{
         frontmatter{
@@ -90,8 +158,8 @@ export const query = graphql`
           placeholder{
             childImageSharp {
               gatsbyImageData(
-                width : 500
-                height: 500
+                width : 800
+                height: 800
                 placeholder: BLURRED
                 formats : [AUTO,WEBP,AVIF]
               )
@@ -99,6 +167,14 @@ export const query = graphql`
           }
         }
       }
+    }
+  }
+  site {
+    siteMetadata {
+      description
+      siteUrl
+      title
+      titleTemplate
     }
   }
 }

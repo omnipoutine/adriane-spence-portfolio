@@ -2,49 +2,88 @@ import React,{useState} from 'react';
 import styled from 'styled-components'
 import { Link } from "gatsby"
 
+
+
+ const flexColumnCenterCenter = `
+display:flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+
+`
+ const flexColumnCenterStart = `
+display:flex;
+flex-direction: column;
+justify-content:center;
+align-items:start;
+
+`
+
+
+ const flexRowBetweenCenter = `
+display:flex;
+flex-direction: row;
+justify-content:space-between;
+align-items:center;
+
+`
+ const flexRowAroundCenter = `
+display:flex;
+flex-direction: row;
+justify-content:space-around;
+align-items:center;
+
+`
+
+
+
+
+
+
 const MenuIcon = styled.button`
 font-family: 'CabinetGrotesk-Variable', arial, sans-serif;
 
 //Flexbox Center for button text
 
-display:flex;
-justify-content: center;
-align-items:center;
+${flexColumnCenterCenter}
 border:none;
 transition: background 150ms linear;
-background: rgba(0,0,0,0);
+background: var(--transparent-color);
 z-index: 5;
 
 //Button Text styling
 p{
-    color:#000000;
-    font-size:var(--text-nav-mobile);
-    padding:1rem;
+    color:var(--primary-text-color);
+    font-size:var(--text-nav);
+    padding:var(--nav-spacing);
     text-decoration:underline;
 }
-@media only screen and (min-width:768px){
-   p{ font-size:var(--text-nav-tablet); }
-}
+
 `
 
 //Styling for container holding entire nav
 const Container = styled.div`
-    background: #d4d4d4;
+    background: var(--main-bg);
     postion:relative;
 
     //Styling for mobile nav header
     #navHead{
-        font-size:var(--text-nav-mobile);
-        display:flex;
-        justify-content: center;
-        align-items:center;
-        padding:1rem;
-       p{
-        
-       }
+        font-size:var(--text-nav);
+        ${flexColumnCenterCenter}
+        padding:var(--nav-spacing);
     }
+
     #desktopMenu{
         display:none;
+        z-index:5;
+        a{
+            transition: 100ms ease-in
+        }
+
+        a:hover{
+            font-weight:500;
+            text-decoration:underline;
+        }
     }
 
     //Styling for mobile navbar container
@@ -53,10 +92,7 @@ const Container = styled.div`
         position:fixed;
         top:0rem;
         z-index:5;
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:center;
+        ${flexRowBetweenCenter}
         width:100%;
     }
     @media only screen and (min-width:768px){
@@ -65,6 +101,7 @@ const Container = styled.div`
         }
     }
     @media only screen and (min-width: 1200px){
+        
         #mobileMenu{
             display:none;
         }
@@ -72,25 +109,19 @@ const Container = styled.div`
             width:100%;
             position:fixed;
             background: var(--main-bg);
-            display:flex;
-            flex-direction:row;
-            align-items:center;
-            justify-content:space-between;
+            ${flexRowBetweenCenter}
 
             #headerLink{
-                margin-left:var(--nav-desktop-spacing);
+                margin-left:var(--nav-spacing);
             }
 
             ul{
-                display:flex;
-            flex-direction:row;
-            align-items:center;
-            justify-content:space-around;
-            list-style:none;
+            ${flexRowAroundCenter}
+            
             
             }
             li{
-                margin-right:var(--nav-desktop-spacing);
+                margin-right:var(--nav-spacing);
             }
         }
     }
@@ -99,10 +130,7 @@ const Container = styled.div`
 //Styling for mobile nav menu offscreen.
 const MenuLink = styled.nav`
 background:var(--main-bg);
-display:flex;
-flex-direction: column;
-justify-content:center;
-align-items: start;
+${flexColumnCenterStart}
 text-align:left;
 height:100vh;
 width:100%;
@@ -114,17 +142,19 @@ transform: ${({nav}) => nav ? "translateX(0)": "translateX(100%)"};
 transition: transform 150ms linear;
 
 ul{
-    list-style:none;
-    font-size:var(--text-mobile-menu);
-    padding-left:var(--nav-mobile-spacing);
+    
+    font-size:var(--text-menu);
+    padding-left:var(--nav-spacing);
     li{
-        margin-bottom:var(--nav-mobile-spacing);
+        margin-bottom:var(--nav-spacing);
+        a{transition: 100ms ease-in}
+        a:hover{
+            font-weight:500;
+            text-decoration:underline;
+        }
     }
 }
-@media only screen and (min-width:768px){
-    a{font-size:var(--text-tablet-menu);}
-    
-}
+
 `
 
 const Navbar = () => {
@@ -145,9 +175,9 @@ const Navbar = () => {
                 <Link to='/' id="headerLink">adriane spence</Link>
                 <div>
                     <ul>
-                        <li><Link to='/'>work</Link></li>
-                        <li><Link to='/'>contact</Link></li>
-                        <li><Link to='/'>about</Link></li>
+                        <li><Link to='/#projects'>work</Link></li>
+                        <li><Link to='#footer'>contact</Link></li>
+                        <li><Link to='/about'>about</Link></li>
                     </ul>
                 </div>
             </div>
@@ -166,15 +196,15 @@ const Navbar = () => {
                     
                     </li>
                     
-                    <li><Link to="/#work" onClick ={() => {showNav(!nav);}}>About</Link>
+                    <li><Link to="/about" onClick ={() => {showNav(!nav);}}>About</Link>
                     
                     </li>
                     
-                    <li><Link to="/contact" onClick ={() => {showNav(!nav);}}>Projects</Link>
+                    <li><Link to="/#projects" onClick ={() => {showNav(!nav);}}>Projects</Link>
                     
                     </li>
                     
-                    <li><Link to="/about" onClick ={() => {showNav(!nav);}} >Contact</Link>
+                    <li><Link to="#footer" onClick ={() => {showNav(!nav);}} >Contact</Link>
                     
 
                     </li>
