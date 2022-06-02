@@ -49,6 +49,10 @@ justify-content:center;
 
  }
  .cardDiv{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
    margin-top:var(--card-margin);
    margin-bottom:var(--card-margin);
    padding:1rem;

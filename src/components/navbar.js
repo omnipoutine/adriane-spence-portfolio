@@ -65,7 +65,7 @@ p{
 const Container = styled.div`
     background: var(--main-bg);
     postion:relative;
-
+    z-index:5;
     //Styling for mobile nav header
     #navHead{
         font-size:var(--text-nav);
