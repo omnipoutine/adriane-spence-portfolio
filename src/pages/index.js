@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { getImage,StaticImage } from 'gatsby-plugin-image'
 import Card from "../components/card"
-import { Helmet } from "react-helmet"
 import Meta from "../components/helmet"
 const IndexContainer = styled.div`
 display:flex;
@@ -22,7 +21,7 @@ justify-content:center;
    flex-direction:column;
    align-items:center;
    justify-content:center;
-  padding-top:7rem;
+    padding-top:7rem;
    min-height:100vh;
    
    h1{
@@ -36,6 +35,7 @@ justify-content:center;
      max-width:90%;
      margin-left:auto;
      margin-right:auto;
+     
      
    }
    
@@ -126,7 +126,7 @@ const IndexPage = ({data}) => {
       <Meta title={data.site.siteMetadata.title} description={data.site.siteMetadata.description} link={data.site.siteMetadata.siteUrl}></Meta>
       <Layout>
         <IndexContainer>
-          <div id="mainHeaderDiv"><h1>I'm an Industrial Designer based in Toronto. </h1><div><StaticImage src="../images/subway platform.png" alt="A stat" id="mainImg" loading="eager"></StaticImage></div></div>
+          <div id="mainHeaderDiv"><h1>I'm an Industrial Designer based in Toronto. </h1><div><StaticImage src="../images/exploded.png" alt="A stat" id="mainImg" loading="eager"></StaticImage></div></div>
           
           <section id="projects">
             <div id="projectHeaderDiv">
