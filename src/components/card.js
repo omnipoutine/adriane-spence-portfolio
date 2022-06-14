@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby';
 import { flexRowBetweenCenter } from './layout';
+
+
+
+//Styling for Component Container
 const CardContainer = styled.div`
     max-width:var(--img-size);
 
@@ -56,7 +60,11 @@ const CardContainer = styled.div`
         to{color:var(--primary-text-color)}
     }
 `
-
+//Component for project card on index page
+// props
+//link - link to the individual project page
+//title - title of project
+//description - short description of project
 const Card = ( props ) => {
 return(
     <CardContainer>

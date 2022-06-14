@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components'
 
-const FooterDiv = styled.footer`
+//Styling for container around footer
+const FooterContainer = styled.footer`
 --margin-bottom: 1rem;
 --list-width: 66%;
 @media only screen and (min-width:768px){
@@ -29,10 +30,10 @@ ul{
     width:var(--list-width);
 }
 `
-
+//Component for footer of website
 const Footer = () => {
     return(
-        <FooterDiv id="footer">
+        <FooterContainer id="footer">
             <h1>Get in Touch</h1>
             <div id='listDiv'>
                 <ul>
@@ -45,7 +46,7 @@ const Footer = () => {
                     <li><a href='https://instagram.com'>contact page</a></li> 
                 </ul>
             </div>
-        </FooterDiv>
+        </FooterContainer>
     )
 }
 export default Footer;

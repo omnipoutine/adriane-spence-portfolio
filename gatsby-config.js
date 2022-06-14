@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Adriane Spence`,
     titleTemplate: `%s · Industrial Designer`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://dazzling-pika-20e680.netlify.app/`,
     description: `Industrial Designer based in Toronto, Canada.`,
     icon: `/icon.png`,
   },

@@ -4,6 +4,8 @@ import Navbar from './navbar';
 import Footer from './footer';
 import './layout.css'
 
+
+//Variables for Common Flexbox configurations
 export const flexColumnCenterCenter = `
 display:flex;
 flex-direction: column;
@@ -36,7 +38,8 @@ align-items:center;
 `
 
 
-
+//Global Styling
+//Contains common variables for all pages and controls sizing on different viewsizes
 const Global = createGlobalStyle`
 :root{
 //Variable Declerations for all view sizes
@@ -102,7 +105,7 @@ const Global = createGlobalStyle`
 
 }
 
-
+//Sets Variables for font sizes and backgrounds
 :root{
     // Font Website https://www.fontshare.com/fonts/cabinet-grotesk
     font-family: 'CabinetGrotesk-Variable', Arial, Sans-serif;

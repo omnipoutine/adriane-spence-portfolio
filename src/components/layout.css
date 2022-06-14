@@ -1,3 +1,5 @@
+/* Universal CSS file for local font */
+
 @font-face {
     font-family: 'CabinetGrotesk-Variable';
     src: url('../fonts/CabinetGrotesk-Variable.woff2') format('woff2'),

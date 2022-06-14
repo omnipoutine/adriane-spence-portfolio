@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from "gatsby"
 
 
-
+//Common flex variables *to be moved to universal position
  const flexColumnCenterCenter = `
 display:flex;
 flex-direction: column;
@@ -39,7 +39,7 @@ align-items:center;
 
 
 
-
+//Styling for button to open mobile menu
 const MenuIcon = styled.button`
 font-family: 'CabinetGrotesk-Variable', arial, sans-serif;
 
@@ -72,7 +72,7 @@ const Container = styled.div`
         ${flexColumnCenterCenter}
         padding:var(--nav-spacing);
     }
-
+    //Styling for desktop menu container
     #desktopMenu{
         display:none;
         z-index:5;
@@ -95,11 +95,7 @@ const Container = styled.div`
         ${flexRowBetweenCenter}
         width:100%;
     }
-    @media only screen and (min-width:768px){
-        #navHead{
-            font-size:var(--text-nav-tablet);
-        }
-    }
+    //On desktop sizing switches nav menus
     @media only screen and (min-width: 1200px){
         
         #mobileMenu{
